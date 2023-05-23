@@ -51,33 +51,37 @@ const App = () => {
         <Routes>
           <Route path={LOGIN_URL} element={<Login />} />
           <Route path={REGISTER_URL} element={<Signup />} />
+          <Route path="/" element={
+            <>
+              <h1 className="title">Task to do</h1>
+
+              <div className="input_holder">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+
+                <button type="submit" onClick={updateId ? updateTask : addTask}>
+                  {updateId ? "Update Task" : "Add Task"}
+                </button>
+              </div>
+
+              <ul>
+                {tasks.map((task) => (
+                  <List
+                    key={task._id}
+                    id={task._id}
+                    task={task.task}
+                    setUpdateUI={setUpdateUI}
+                    updateMode={updateMode}
+                  />
+                ))}
+              </ul>
+            </>
+          } />
         </Routes>
       </Router>
-      {/* <h1 className="title">Task to do</h1>
-
-      <div className="input_holder">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-        />
-
-        <button type="submit" onClick={updateId ? updateTask : addTask}>
-          {updateId ? "Update Task" : "Add Task"}
-        </button>
-      </div>
-
-      <ul>
-        {tasks.map((task) => (
-          <List
-            key={task._id}
-            id={task._id}
-            task={task.task}
-            setUpdateUI={setUpdateUI}
-            updateMode={updateMode}
-          />
-        ))}
-      </ul> */}
     </main>
   );
 };
