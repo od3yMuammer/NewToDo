@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import List from "./components/List";
 import axios from "axios";
 import { baseURL } from "./utils/constant";
+import { LOGIN_URL, REGISTER_URL } from "./utils/routes";
+import Login from "./register";
+import Signup from "./login";
+
 
 const App = () => {
   const [input, setInput] = useState("");
@@ -41,7 +47,13 @@ const App = () => {
 
   return (
     <main>
-      <h1 className="title">Task to do</h1>
+      <Router>
+        <Routes>
+          <Route path={LOGIN_URL} element={<Login />} />
+          <Route path={REGISTER_URL} element={<Signup />} />
+        </Routes>
+      </Router>
+      {/* <h1 className="title">Task to do</h1>
 
       <div className="input_holder">
         <input
@@ -65,7 +77,7 @@ const App = () => {
             updateMode={updateMode}
           />
         ))}
-      </ul>
+      </ul> */}
     </main>
   );
 };

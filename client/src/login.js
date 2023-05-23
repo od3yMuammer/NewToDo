@@ -2,12 +2,10 @@ import './Style.css';
 import React, { Component } from 'react';
 
 
-class Signup extends Component {
+export default function Signup() {
 
-    render() {
         return (
             <div>
-                <h1> Signup </h1>
                 <form onSubmit={this.handleSubmit} action='' >
                     <div>
                         <label>Username    </label>
@@ -27,6 +25,4 @@ class Signup extends Component {
                 </form>
             </div>
         );
-    }
 }
-export default Signup;
